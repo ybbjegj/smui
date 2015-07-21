@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimal-ui,width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="手机神马百科网" name="description"/>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" name="viewport"/>
+    <meta name="author" content="m.sm.cn"/>
+    <meta name="copyright" content="Copyright m.sm.cn 版权所有"/>
+    <title>tab</title>
+    <link rel="stylesheet" type="text/css" href="./css/smui.carousel.css">
+    <link rel="stylesheet" type="text/css" href="./css/smui.imagelazy.css">
+<body>
+
+    <div class="smui-carousel" data-carousel>
+        <a href="javascript:;" class="smui-nav-btn smui-nav-left" data-carousel-prev></a>
+
+        <div data-carousel-container  class="smui-carousel-content">
+            <ul data-carousel-list>
+                <li data-carousel-item  class="smui-carousel-hastitle smui-lazy-img"  >
+                    <img class="lazy" data-lazy-img data-src="http://s2.zimgs.cn/ims?kt=url&amp;at=ori&amp;tv=0_0&amp;sign=yx:H04ZQvxARNg7plzPP0uv6kEXsgo=&amp;key=aHR0cDovL2E0LmF0dC5odWRvbmcuY29tLzA3Lzg4LzAxMzAwNTQyNTcwMzkwMTQwNzc1ODgwMDY4NTEzX3MuanBn&amp;x.jpg">
+                    <span class="loading" data-img-loading> <i>正在加载</i>
+                    </span>
+                </li>
+
+                <li data-carousel-item class="smui-carousel-hastitle smui-lazy-img" >
+                    <img class="lazy" data-lazy-img data-src="http://s2.zimgs.cn/ims?kt=url&amp;at=ori&amp;tv=0_0&amp;sign=yx:ebmpXGDktFXzYrhR562AfZdC4rM=&amp;key=aHR0cDovL2EyLmF0dC5odWRvbmcuY29tLzIzLzAwLzAxMjAwMDAwMjMwMzkzMTIwNTMwMDA1NDc2NzYxX3MuanBn&amp;x.jpg">
+                    <span class="loading" data-img-loading> <i>正在加载</i>
+                    </span>
+
+                </li>
+
+                <li data-carousel-item class="smui-carousel-hastitle smui-lazy-img" >
+                    <img class="lazy" data-lazy-img data-src="http://s2.zimgs.cn/ims?kt=url&amp;at=ori&amp;tv=0_0&amp;sign=yx:lwSYITfIzUVl3O-iQSeUf94JY7I=&amp;key=aHR0cDovL2ExLmF0dC5odWRvbmcuY29tLzIwLzY5LzAxMzAwMDAwMTcyNTY2MTI1MzE4Njk5NzI0OTA2X3MuanBn&amp;x.jpg">
+                    <span class="loading" data-img-loading>
+                        <i>正在加载</i>
+                    </span>
+                </li>
+
+                <li data-carousel-item class="smui-carousel-hastitle smui-lazy-img">
+                    <img class="lazy" data-lazy-img data-src="http://s2.zimgs.cn/ims?kt=url&amp;at=ori&amp;tv=0_0&amp;sign=yx:pH1_0X0SDlFDnEWtaDj9TcRnVv4=&amp;key=aHR0cDovL2E0LmF0dC5odWRvbmcuY29tLzQwLzA0LzAxMzAwNTQyNzI1ODI5MTQwOTcxMDQ0OTU1OTIwX3MuanBn&amp;x.jpg">
+                    <span class="loading"  data-img-loading>
+                        <i>正在加载</i>
+                    </span>
+                </li>
+
+            </ul>
+        </div>
+        <a href="javascript:;" class="smui-nav-btn smui-nav-right" data-carousel-next></a>
+    </div>
+</body>
+
+    <script type="text/javascript" src='../lib/zepto.js'></script>
+    <script type="text/javascript" src='../../dist/smui.js'></script>
+    <script>
+    
+
+       $('.smui-carousel').carousel({
+            isLoop:true,
+            slider:{
+                tackCursor:false,
+                supportSwipe:false
+            },
+            autoPlay:{
+                direction : 'r2l'
+            },
+            isAutoPlay: true
+       });
+
+       $('.smui-carousel').on('slider',function(e,i){
+         $('.smui-carousel li').eq(i+1).lazyImage(); 
+         $('.smui-carousel li').eq(i-1).lazyImage();              
+       });
+
+       $('.smui-carousel li').eq(0).lazyImage();
+    </script>
+
+</html>

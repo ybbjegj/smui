@@ -1,0 +1,15 @@
+{
+  "name": "smui",
+  "version": "1.0.0",
+  "description": "Build smui project with webpack",
+ 
+  "author": "Guo Mingli",
+  "license": "MIT",
+  "scripts": {
+    "dev":"webpack --watch --config webpack-dev-config.js"
+  },
+  "devDependencies": {   
+    "uglify-js":"*",    
+    "webpack": "^1.9.10"
+  }
+}

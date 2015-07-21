@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.tab-page {
+    display: none;
+    width: 100%;
+    height: 100%;
+    
+    background: #fefeee;
+}
+.tab-page.current {
+    display: block;
+}
+
+
+.tab-contianer{
+    min-width:56px;
+    position: fixed;
+
+    top:0px;
+
+    bottom: 0px;
+}
+
+.tab-page-container{
+
+    right: 0px;
+    left: 126px;
+    position: fixed;
+    
+    top:0px;
+
+    bottom: 0px;
+
+}

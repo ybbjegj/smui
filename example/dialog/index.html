@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimal-ui,width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="手机神马百科网" name="description"/>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" name="viewport"/>
+    <meta name="author" content="m.sm.cn"/>
+    <meta name="copyright" content="Copyright m.sm.cn 版权所有"/>
+    <title>tab</title>
+    <link rel="stylesheet" type="text/css" href="./css/smui.dialog.css">
+<body>
+
+    <div  class='smui-dialog ' data-dialog>
+        <div class='smui-dialog-header'>
+            <span class='smui-dialog-title' data-title>提醒</span>
+            <a href="javascript:;" class='smui-dialog-close' data-close></a>
+        </div>
+        <div class='smui-dialog-content' data-content>
+            
+        </div>
+        <div class='smui-dialog-btns'>
+            <a href="javascript:;" class='smui-dialog-confirm' data-confirm>确定</a>
+            <a href="javascript:;" class='smui-dialog-cancel' data-cancel>取消</a>
+        </div>
+    </div>
+    <a class='click' href="javascript:;">aaaaaaaaa</a>
+</body>
+
+    <script type="text/javascript" src='../lib/zepto.js'></script>
+    <script type="text/javascript" src='../../dist/smui.js'></script>
+
+    <script>
+        $('.smui-dialog').dialog(
+            {
+                autoHide:false,
+                modal:true
+            });
+
+        $('body').on('click','.click',function(e){
+             $('.smui-dialog').dialog('open');
+        });
+
+    </script>
+
+</html>

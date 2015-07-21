@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimal-ui,width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="手机神马百科网" name="description"/>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" name="viewport"/>
+    <meta name="author" content="m.sm.cn"/>
+    <meta name="copyright" content="Copyright m.sm.cn 版权所有"/>
+    <title>tab</title>
+    <link rel="stylesheet" type="text/css" href="./css/smui.aside.css">
+<body>
+
+    <aside class='s-aside' data-aside='#content'>
+        <div class='preson-area'>
+            <a class='photo' href="#">
+                <div>
+                    <img src='' ></div>
+
+                <span>立即登录</span>
+            </a>
+        </div>
+        <div class='operate-area'>
+            <a class='free'>免费咨询</a>
+            <ul class='operate-list'>
+                <li class='s-mark'>
+                    <a href="">保证服务</a>
+                </li>
+                <li class='s-mark'>
+                    <a href="">装修宝典</a>
+                </li>
+                <li class='s-mark'>
+                    <a href="">设计案例</a>
+                </li>
+                <li class='s-mark'>
+                    <a href="">个人中心</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <div style="width:100%;height:100%;background:red">
+         <a class='click' href="javascript:;">push方式</a>
+    <a class='click1' href="javascript:;">overlay方式</a>
+
+
+
+
+    </div>
+   
+</body>
+
+   
+   
+    <script type="text/javascript" src='../lib/zepto.js'></script>
+    <script type="text/javascript" src='../../dist/smui.js'></script>
+    <script type="text/javascript">
+         $('.s-aside').aside({
+        state: 1
+    });
+
+
+
+    $('body').on('click', '.click', function(e) {
+        $('.s-aside').aside('toggle', 'push');
+    });
+
+    $('body').on('click', '.click1', function(e) {
+        $('.s-aside').aside('toggle');
+    });
+
+    </script>
+</html>

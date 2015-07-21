@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.tab-page {
+    display: none;
+    width: 100%;
+    height: 100px;
+    margin-top: 20px;
+    background: #f6f6f6;
+}
+.tab-page.current {
+    display: block;
+}
