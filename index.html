@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>smui --- 移动端组件库 by ybbjegj</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">smui --- 移动端组件库</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/ybbjegj/smui" class="btn">View on GitHub</a>
+      <a href="https://github.com/ybbjegj/smui/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/ybbjegj/smui/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="介绍" class="anchor" href="#%E4%BB%8B%E7%BB%8D" aria-hidden="true"><span class="octicon octicon-link"></span></a>介绍</h2>
+
+<p>smui是基于Zepto.js的移动端组件库，将在开发中经常用到的功能也做为一个组件，开发人员在利用smui做开发时不仅可以直接使用，而且在扩展UI组件时也可以使用已有的组件。同时smui组件支持插件，可以方便的对UI组件做扩展。目前提供的组件可以分为两类，纯js的功能组件和UI组件。</p>
+
+<h2>
+<a id="使用方法" class="anchor" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用方法</h2>
+
+<blockquote>
+<p>组件的使用和大部分的组件库一样，有两种不同的方式。挂载在DOM节点上和面向对象</p>
+</blockquote>
+
+<div class="highlight highlight-js"><pre>    $(<span class="pl-s"><span class="pl-pds">'</span>#aside<span class="pl-pds">'</span></span>).aside();
+
+    $(<span class="pl-s"><span class="pl-pds">'</span>#aside<span class="pl-pds">'</span></span>).aside(<span class="pl-s"><span class="pl-pds">'</span>hide<span class="pl-pds">'</span></span>); <span class="pl-c">//调用组件的方法。</span>
+
+    <span class="pl-c">//或者 </span>
+
+    <span class="pl-k">var</span> aside <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">smui.aside</span>();
+    aside.show();
+</pre></div>
+
+<h2>
+<a id="ui组件" class="anchor" href="#ui%E7%BB%84%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>UI组件</h2>
+
+<blockquote>
+<p>依赖css，html的组件。smui中主要有：aside,carousel,dialog,tab,imagelazy。</p>
+</blockquote>
+
+<h4>
+<a id="aside组件" class="anchor" href="#aside%E7%BB%84%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>aside组件</h4>
+
+<p>说明：弹出式侧边栏</p>
+
+<p>1.Parameter</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>direction</td>
+<td>String</td>
+<td>侧边栏弹出的方向：l2r：从左向右,r2l：从右向左,t2b：从上向下,b2t：从下向上;</td>
+</tr>
+<tr>
+<td>speed</td>
+<td>Number</td>
+<td>侧边栏弹出的速度，单位ms</td>
+</tr>
+<tr>
+<td>size</td>
+<td>String</td>
+<td>侧边栏的大小，具体是width或height与侧边栏弹出方向有关，水平方向，则代表width。</td>
+</tr>
+<tr>
+<td>modal</td>
+<td>Object,Boolean</td>
+<td>是否出现遮着层,若为fasle 则没有遮罩层，若为{} 则有，具体参数参见layermask组件。</td>
+</tr>
+<tr>
+<td>position</td>
+<td>Object,Boolean</td>
+<td>定位侧边样，top，bottom 只在侧边栏从水平方向出现时有效;left , right 只在侧边栏从垂直方向出现时有效</td>
+</tr>
+<tr>
+<td>contentWrap</td>
+<td>Dom,Zepto,selector</td>
+<td>主体内容dom，若不传，则默认为aside的next节点</td>
+</tr>
+<tr>
+<td>display</td>
+<td>String</td>
+<td>可选值：('overlay' , 'push') aside出现模式，overlay表示浮层，push表示aside将content推出</td>
+</tr>
+</tbody>
+</table>
+
+<p>2.Methods</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>destroy</td>
+<td>无</td>
+<td>释放内存</td>
+</tr>
+<tr>
+<td>hide</td>
+<td>string:指定显示隐藏的方式，参见Parameter中display</td>
+<td>隐藏侧边栏，触发close事件</td>
+</tr>
+<tr>
+<td>show</td>
+<td>同hide</td>
+<td>显示侧边栏，触发open事件</td>
+</tr>
+<tr>
+<td>toggle</td>
+<td>同hide</td>
+<td>显示或隐藏侧边栏</td>
+</tr>
+</tbody>
+</table>
+
+<p>3.Events</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close</td>
+<td>侧边栏隐藏时触发</td>
+</tr>
+<tr>
+<td>open</td>
+<td>侧边栏打开时触发</td>
+</tr>
+</tbody>
+</table>
+
+<p>4.example</p>
+
+<div class="highlight highlight-html"><pre>    &lt;<span class="pl-ent">aside</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>s-aside<span class="pl-pds">'</span></span>&gt;
+        你自己决定显示什么了
+    &lt;/<span class="pl-ent">aside</span>&gt;
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>content<span class="pl-pds">"</span></span>&gt;
+        你页面要显示的
+        &lt;<span class="pl-ent">a</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>push<span class="pl-pds">'</span></span>&gt;push方式&lt;/<span class="pl-ent">a</span>&gt;
+        &lt;<span class="pl-ent">a</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>overlay<span class="pl-pds">'</span></span>&gt;overlay方式&lt;/<span class="pl-ent">a</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<div class="highlight highlight-js"><pre>    <span class="pl-k">var</span> $aside <span class="pl-k">=</span> $(<span class="pl-s"><span class="pl-pds">'</span>.s-aside<span class="pl-pds">'</span></span>);
+    $aside.aside();
+    $(<span class="pl-s"><span class="pl-pds">'</span>body<span class="pl-pds">'</span></span>).on(<span class="pl-s"><span class="pl-pds">'</span>click<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">e</span>){
+        $aside.aside(<span class="pl-s"><span class="pl-pds">'</span>toggle<span class="pl-pds">'</span></span>,$(<span class="pl-v">this</span>).attr(<span class="pl-s"><span class="pl-pds">'</span>class<span class="pl-pds">'</span></span>));
+    });</pre></div>
+
+<h4>
+<a id="carousel组件" class="anchor" href="#carousel%E7%BB%84%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>carousel组件</h4>
+
+<p>说明：轮播图组件</p>
+
+<p>1.Parameter</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>slider</td>
+<td>Object</td>
+<td>选填,设置slider参数,请参照slider组件</td>
+</tr>
+<tr>
+<td>isAutoPlay</td>
+<td>Boolean</td>
+<td>是否自动开始切换,若为true,则isLoop自动设为true</td>
+</tr>
+<tr>
+<td>autoPlay</td>
+<td>Object</td>
+<td>自动播放的参数{speed:500,direction:'r2l'}。 自动切换时的方向。l2r,r2l,t2b,b2t;</td>
+</tr>
+<tr>
+<td>current</td>
+<td>Number</td>
+<td>当前显示的索引 从0开始</td>
+</tr>
+<tr>
+<td>isLoop</td>
+<td>Boolean</td>
+<td>是否无缝循环切换</td>
+</tr>
+<tr>
+<td>loopSpeed</td>
+<td>Number</td>
+<td>无缝循环时，第一个和最后一个之前的切换时间</td>
+</tr>
+<tr>
+<td>orientation</td>
+<td>Boolean</td>
+<td>是否支持转屏时重新定位</td>
+</tr>
+</tbody>
+</table>
+
+<p>2.Methods</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>destroy</td>
+<td>无</td>
+<td>释放内存</td>
+</tr>
+<tr>
+<td>next</td>
+<td>无</td>
+<td>切换到下一个索引位置</td>
+</tr>
+<tr>
+<td>prev</td>
+<td>无</td>
+<td>切换到下一个索引位置</td>
+</tr>
+<tr>
+<td>sliderTo</td>
+<td>i,speed</td>
+<td>切换到指定索引位置</td>
+</tr>
+</tbody>
+</table>
+
+<p>3.Events</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>slider</td>
+<td>轮播切换时触发</td>
+</tr>
+</tbody>
+</table>
+
+<p>4.html上识别的data-
+data-carousel-container 轮播图容器，
+data-carousel-list      轮播图列表
+data-carousel-item      轮播图片
+data-carousel-next      下一张
+data-carousel-prev      上一张</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>smui-carousel<span class="pl-pds">"</span></span> <span class="pl-e">data-carousel</span>&gt;
+        &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>javascript:;<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>smui-nav-btn smui-nav-left<span class="pl-pds">"</span></span> <span class="pl-e">data-carousel-prev</span>&gt;&lt;/<span class="pl-ent">a</span>&gt;
+
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">data-carousel-container</span>  <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>smui-carousel-content<span class="pl-pds">"</span></span>&gt;
+            &lt;<span class="pl-ent">ul</span> <span class="pl-e">data-carousel-list</span>&gt;
+                &lt;<span class="pl-ent">li</span> <span class="pl-e">data-carousel-item</span>  <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>smui-carousel-hastitle smui-lazy-img<span class="pl-pds">"</span></span>  &gt;
+
+                &lt;/<span class="pl-ent">li</span>&gt;
+
+                &lt;<span class="pl-ent">li</span> <span class="pl-e">data-carousel-item</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>smui-carousel-hastitle smui-lazy-img<span class="pl-pds">"</span></span> &gt;
+
+                &lt;/<span class="pl-ent">li</span>&gt; 
+            &lt;/<span class="pl-ent">ul</span>&gt;
+        &lt;/<span class="pl-ent">div</span>&gt;
+        &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>javascript:;<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>smui-nav-btn smui-nav-right<span class="pl-pds">"</span></span> <span class="pl-e">data-carousel-next</span>&gt;&lt;/<span class="pl-ent">a</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<h4>
+<a id="dialog" class="anchor" href="#dialog" aria-hidden="true"><span class="octicon octicon-link"></span></a>dialog</h4>
+
+<p>说明：弹出框组件</p>
+
+<p>1.Parameter</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autoHide</td>
+<td>Boolean</td>
+<td>是否自动消失 ,若为true时，默认2000ms自动</td>
+</tr>
+<tr>
+<td>modal</td>
+<td>Boolean</td>
+<td>是否是模态,可以设置为{} 参数请参照smui.layermask</td>
+</tr>
+</tbody>
+</table>
+
+<p>2.Methods</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>destroy</td>
+<td>无</td>
+<td>释放内存</td>
+</tr>
+<tr>
+<td>close</td>
+<td>无</td>
+<td>关闭对话框，触发close事件</td>
+</tr>
+<tr>
+<td>open</td>
+<td>无</td>
+<td>打开对话框，触发open事件</td>
+</tr>
+</tbody>
+</table>
+
+<p>3.Events</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cancel</td>
+<td>点击取消时触发</td>
+</tr>
+<tr>
+<td>close</td>
+<td>dialog关闭时触发</td>
+</tr>
+<tr>
+<td>confirm</td>
+<td>点击确定时触发</td>
+</tr>
+<tr>
+<td>open</td>
+<td>对话框打开时触发</td>
+</tr>
+</tbody>
+</table>
+
+<p>4.html上识别的data-
+data-confirm 确认，
+data-cancel  取消
+data-close   关闭</p>
+
+<div class="highlight highlight-html"><pre> &lt;<span class="pl-ent">div</span>  <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>smui-dialog <span class="pl-pds">'</span></span> <span class="pl-e">data-dialog</span>&gt;
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>smui-dialog-header<span class="pl-pds">'</span></span>&gt;
+            &lt;<span class="pl-ent">span</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>smui-dialog-title<span class="pl-pds">'</span></span> &gt;提醒&lt;/<span class="pl-ent">span</span>&gt;
+            &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>javascript:;<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>smui-dialog-close<span class="pl-pds">'</span></span> <span class="pl-e">data-close</span>&gt;&lt;/<span class="pl-ent">a</span>&gt;
+        &lt;/<span class="pl-ent">div</span>&gt;
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>smui-dialog-content<span class="pl-pds">'</span></span> &gt;
+
+        &lt;/<span class="pl-ent">div</span>&gt;
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>smui-dialog-btns<span class="pl-pds">'</span></span>&gt;
+            &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>javascript:;<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>smui-dialog-confirm<span class="pl-pds">'</span></span> <span class="pl-e">data-confirm</span>&gt;确定&lt;/<span class="pl-ent">a</span>&gt;
+            &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>javascript:;<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">'</span>smui-dialog-cancel<span class="pl-pds">'</span></span> <span class="pl-e">data-cancel</span>&gt;取消&lt;/<span class="pl-ent">a</span>&gt;
+        &lt;/<span class="pl-ent">div</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<h4>
+<a id="tab" class="anchor" href="#tab" aria-hidden="true"><span class="octicon octicon-link"></span></a>tab</h4>
+
+<p>说明：选项卡组件，tab组件或Navigator组件，具体可由css来控制，如果[data-items]的宽度或高度小于或等于.smui-tab的宽或高的话，slider的滑动会失效</p>
+
+<p>1.Parameter</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>current</td>
+<td>String</td>
+<td>当前选中项的标示</td>
+</tr>
+<tr>
+<td>slider</td>
+<td>null，Object</td>
+<td>是否支持滑动 具体参数值参考slider</td>
+</tr>
+<tr>
+<td>supportHistory</td>
+<td>boolean</td>
+<td>是否支持选项卡与浏览器历史的前进后退关联在一起</td>
+</tr>
+</tbody>
+</table>
+
+<p>2.Methods</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>destroy</td>
+<td>无</td>
+<td>释放内存</td>
+</tr>
+<tr>
+<td>getCurrentTab</td>
+<td>无</td>
+<td>获取当前tab,返回DOM对像</td>
+</tr>
+<tr>
+<td>getIndex</td>
+<td>无</td>
+<td>获取当前选中的序号</td>
+</tr>
+<tr>
+<td>getLen</td>
+<td>无</td>
+<td>获取tab的个数</td>
+</tr>
+<tr>
+<td>getTabByIndex</td>
+<td>i,索引号</td>
+<td>根据索引号获取tab，返回DOM对像</td>
+</tr>
+<tr>
+<td>getTabs</td>
+<td>无</td>
+<td>获取所有的tab</td>
+</tr>
+<tr>
+<td>next</td>
+<td>无</td>
+<td>切换至下一个tab</td>
+</tr>
+<tr>
+<td>prev</td>
+<td>无</td>
+<td>切换至上一个tab</td>
+</tr>
+<tr>
+<td>switchTo</td>
+<td>i,索引号</td>
+<td>切换到导航栏的某一项</td>
+</tr>
+</tbody>
+</table>
+
+<p>3.Events</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>beforeSelect</td>
+<td>切换tab完成前触发</td>
+</tr>
+<tr>
+<td>select</td>
+<td>切换tab完成后触发</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code>//Html代码
+ &lt;div class="smui-tab "&gt;
+            &lt;ul data-items &gt;
+                &lt;li class=" " data-hash='#a1' data-item&gt;
+                    &lt;a data-href="#catelog_abstract" &gt;摘要&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li data-hash='#b1'  data-item&gt;
+                    &lt;a data-href="#catelog_infobox"&gt;基本信息&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class="" data-hash='#c1' data-item&gt;
+                    &lt;a data-href="#catelog_1"&gt;简介&lt;/a&gt;
+                &lt;/li&gt;               
+            &lt;/ul&gt;
+        &lt;/div&gt;
+//Js代码
+$('.smui-tab').tab({
+            slider: {
+                direction:"x"
+            },
+            supportHistory: true
+        });
+        $('body').on('select','.smui-tab',function(e,$tab,i){
+
+            var pane=$('.tab-page').removeClass('current').eq(i);
+
+            pane.addClass('current');
+
+        }).on('beforeSelect','.smui-tab',function(e,tab,i){
+            var pane=$('.tab-page').eq(i);
+
+            if(i!=0 &amp;&amp; typeof pane.data('loaded')=='undefined'){
+                pane.html('正在加载'+i+'号tab……');
+                ~function(i){setTimeout(function(){
+                    pane.html(i+'号tab欢迎您');
+                    pane.data('loaded','loaded');
+                }, 3000)}(i);            
+        }
+    });
+
+</code></pre>
+
+<h4>
+<a id="lazyimage" class="anchor" href="#lazyimage" aria-hidden="true"><span class="octicon octicon-link"></span></a>lazyImage</h4>
+
+<p>说明：图片的懒加载</p>
+
+<p>1.Parameter</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>effect</td>
+<td>Object</td>
+<td>当前选中项的标示</td>
+</tr>
+<tr>
+<td>loading</td>
+<td>Object</td>
+<td>图片loading的淡隐淡出参数</td>
+</tr>
+<tr>
+<td>isScrollLoad</td>
+<td>boolean</td>
+<td>是否支持选项卡与浏览器历史的前进后退关联在一起</td>
+</tr>
+</tbody>
+</table>
+
+<p>loading参数：</p>
+
+<pre><code>    speed: 100, //Number  淡隐淡出的时间（速度）
+
+    opacity: [1, 0], //Array   淡隐淡出的透明度     
+
+    easing: 'ease', //String  缓动函数
+
+    delay: 0 //Number  淡隐淡出的延迟时间
+
+</code></pre>
+
+<p>2.example</p>
+
+<pre><code>&lt;div class="smui-lazy-img"  &gt;
+    &lt;img data-lazy-img data-src="http://s2.zimgs.cn/ims?kt=url&amp;amp;at=ori&amp;amp;tv=0_0&amp;amp;sign=yx:H04ZQvxARNg7plzPP0uv6kEXsgo=&amp;amp;key=aHR0cDovL2E0LmF0dC5odWRvbmcuY29tLzA3Lzg4LzAxMzAwNTQyNTcwMzkwMTQwNzc1ODgwMDY4NTEzX3MuanBn&amp;amp;x.jpg"&gt;
+    &lt;span class="loading" data-img-loading&gt; &lt;i&gt;正在加载&lt;/i&gt;
+    &lt;/span&gt;
+&lt;/div&gt;
+
+ $('body').lazyImage();
+
+</code></pre>
+
+<p>3.html上识别的data-
+data-lazy-img 确认，
+data-img-loading  取消</p>
+
+<h2>
+<a id="功能组件" class="anchor" href="#%E5%8A%9F%E8%83%BD%E7%BB%84%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>功能组件</h2>
+
+<blockquote>
+<p>纯js实现的交互行为的组件。smui中有fadeInOut,history,transform,transition,layermask,slider</p>
+</blockquote>
+
+<h4>
+<a id="fadeinout" class="anchor" href="#fadeinout" aria-hidden="true"><span class="octicon octicon-link"></span></a>fadeInOut</h4>
+
+<p>说明：淡隐淡出效果</p>
+
+<p>1.Parameter</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>easing</td>
+<td>String</td>
+<td>缓动函数</td>
+</tr>
+<tr>
+<td>speed</td>
+<td>Number</td>
+<td>淡隐淡出的时间（速度）</td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>Array</td>
+<td>淡隐淡出的透明度 [start,end]</td>
+</tr>
+<tr>
+<td>delay</td>
+<td>Number</td>
+<td>淡隐淡出的延迟时间</td>
+</tr>
+</tbody>
+</table>
+
+<p>2.Methods</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>destroy</td>
+<td>无</td>
+<td>释放内存</td>
+</tr>
+<tr>
+<td>hide</td>
+<td>无</td>
+<td>淡入或淡出，由options.opacity确定</td>
+</tr>
+<tr>
+<td>show</td>
+<td>无</td>
+<td>淡入或淡出，由options.opacity确定</td>
+</tr>
+<tr>
+<td>toggle</td>
+<td>无</td>
+<td>淡入或淡出，由options.opacity确定</td>
+</tr>
+</tbody>
+</table>
+
+<p>3.Events</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fadeCompleted</td>
+<td>效果完成后触发</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="history" class="anchor" href="#history" aria-hidden="true"><span class="octicon octicon-link"></span></a>history</h4>
+
+<p>说明：用于实现组件与浏览器前进后退相关联</p>
+
+<p>1.Events</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>history</td>
+<td>前进后退时解发</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="layermask" class="anchor" href="#layermask" aria-hidden="true"><span class="octicon octicon-link"></span></a>layerMask</h4>
+
+<p>说明：遮罩效果</p>
+
+<p>1.Parameter</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>css</td>
+<td>String</td>
+<td>设置遮罩层的参数</td>
+</tr>
+<tr>
+<td>supportFadeInOut</td>
+<td>Boolean</td>
+<td>遮罩层是否支技淡隐淡出</td>
+</tr>
+<tr>
+<td>fadeInOut</td>
+<td>Object</td>
+<td>设置淡隐淡出的参数</td>
+</tr>
+</tbody>
+</table>
+
+<p>2.Methods</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>destroy</td>
+<td>无</td>
+<td>释放内存</td>
+</tr>
+<tr>
+<td>hide</td>
+<td>无</td>
+<td>隐藏遮罩层同时会把应用遮罩层的DOM隐藏</td>
+</tr>
+<tr>
+<td>show</td>
+<td>无</td>
+<td>显示遮罩层同时会把应用遮罩层的DOM显示出来</td>
+</tr>
+<tr>
+<td>toggle</td>
+<td>无</td>
+<td>显示或隐藏遮罩层</td>
+</tr>
+</tbody>
+</table>
+
+<p>3.Events</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maskClose</td>
+<td>遮罩层关闭后触发</td>
+</tr>
+<tr>
+<td>maskClick</td>
+<td>点击遮罩层时触发</td>
+</tr>
+<tr>
+<td>maskBeforeLoad</td>
+<td>遮罩层显示前触发</td>
+</tr>
+<tr>
+<td>maskLoad</td>
+<td>遮罩层显示后触发</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="slider" class="anchor" href="#slider" aria-hidden="true"><span class="octicon octicon-link"></span></a>slider</h4>
+
+<p>说明：实现DOM元素的滑动</p>
+
+<p>1.Parameter</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>direction</td>
+<td>String</td>
+<td>方向, 默认水平。horizontal:水平方向，vertical:垂直方向</td>
+</tr>
+<tr>
+<td>tackCursor</td>
+<td>Boolean</td>
+<td>是否跟随光标/手指移动</td>
+</tr>
+<tr>
+<td>transition</td>
+<td>Object</td>
+<td>动画设置{speed:500,easing:'ease',delay:0}</td>
+</tr>
+<tr>
+<td>moveDistance</td>
+<td>Number</td>
+<td>slider移动的距离,默认为父节点的宽高</td>
+</tr>
+<tr>
+<td>supportSwipe</td>
+<td>Boolean</td>
+<td>是否支持swipe事件</td>
+</tr>
+<tr>
+<td>slope</td>
+<td>Number</td>
+<td>用于计算slider的有效区域，取值0-1,不推荐修改</td>
+</tr>
+<tr>
+<td>swipe</td>
+<td>Object</td>
+<td>swipe事件的触发临界值{timeout:500,distance:30}</td>
+</tr>
+</tbody>
+</table>
+
+<p>2.Methods</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>destroy</td>
+<td>无</td>
+<td>释放内存</td>
+</tr>
+<tr>
+<td>goLeftOrUp</td>
+<td>无</td>
+<td>向左或向上移动指定的距离</td>
+</tr>
+<tr>
+<td>goRightOrDown</td>
+<td>无</td>
+<td>向右或向下移动指定的距离</td>
+</tr>
+<tr>
+<td>isHorizontal</td>
+<td>无</td>
+<td>获取slider是否是水平方向移动</td>
+</tr>
+<tr>
+<td>moveTo</td>
+<td>pos</td>
+<td>移动到指定的位置</td>
+</tr>
+</tbody>
+</table>
+
+<p>3.Events</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pulled</td>
+<td>在两端拉动完成触发</td>
+</tr>
+<tr>
+<td>pulling</td>
+<td>在两端拉动过程中触发</td>
+</tr>
+<tr>
+<td>swipe</td>
+<td>swipe事件</td>
+</tr>
+<tr>
+<td>t-end</td>
+<td>元素触发touchend事件是触发,这里用于组件利用t-end做扩展</td>
+</tr>
+<tr>
+<td>t-move</td>
+<td>元素触发touchmove事件是触发,这里用于组件利用t-move做扩展</td>
+</tr>
+<tr>
+<td>t-start</td>
+<td>元素触发touchstart事件是触发,这里用于组件利用t-start做扩展</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight highlight-js"><pre>$(<span class="pl-s"><span class="pl-pds">'</span>.test<span class="pl-pds">'</span></span>).on(<span class="pl-s"><span class="pl-pds">'</span>pulling<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">e</span>,<span class="pl-smi">flag</span>){
+    <span class="pl-c">//flag = 1 是在顶部 或 左侧 </span>
+    <span class="pl-c">//flag = 1 是在底部 或 右侧</span>
+})
+$(<span class="pl-s"><span class="pl-pds">'</span>slider<span class="pl-pds">'</span></span>).on(<span class="pl-s"><span class="pl-pds">'</span>swipe<span class="pl-pds">'</span></span>,<span class="pl-k">function</span>(<span class="pl-smi">e</span>,<span class="pl-smi">oe</span>,<span class="pl-smi">pos</span>,<span class="pl-smi">dir</span>){
+    <span class="pl-c">//dir 是方向 1:right或down -1:up或left</span>
+})</pre></div>
+
+<h4>
+<a id="transform" class="anchor" href="#transform" aria-hidden="true"><span class="octicon octicon-link"></span></a>transform</h4>
+
+<p>说明：DOM元素的变形，同css3的transform。</p>
+
+<p>1.Parameter</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is3d</td>
+<td>Boolean</td>
+<td>是否是3D版的属性，默认true</td>
+</tr>
+</tbody>
+</table>
+
+<p>2.Methods</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rotate</td>
+<td>参考CSS3</td>
+<td>参考CSS3</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>参考CSS3</td>
+<td>参考CSS3</td>
+</tr>
+<tr>
+<td>skew</td>
+<td>参考CSS3</td>
+<td>倾斜是二维变形，不能在三维空间变形。元素可能会在X轴和Y轴倾斜，然后转化为三维，但它们不能在Z轴倾斜。</td>
+</tr>
+<tr>
+<td>translate</td>
+<td>参考CSS3</td>
+<td>参考CSS3</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="transform-1" class="anchor" href="#transform-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>transform</h4>
+
+<p>说明：DOM元素的过渡属性，同css3的transform。</p>
+
+<p>1.Parameter</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>speed</td>
+<td>speed</td>
+<td>参考CSS3 transition-duration</td>
+</tr>
+<tr>
+<td>property</td>
+<td>String</td>
+<td>参考CSS3 transition-property， 无素添加前缀</td>
+</tr>
+<tr>
+<td>easing</td>
+<td>String</td>
+<td>参考CSS3 transition-timing-function</td>
+</tr>
+<tr>
+<td>delay</td>
+<td>Number</td>
+<td>参考CSS3 transition-delay</td>
+</tr>
+</tbody>
+</table>
+
+<p>2.Methods</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setDelay</td>
+<td>String</td>
+<td>css属性，参考transition-delay</td>
+</tr>
+<tr>
+<td>setDuration</td>
+<td>Number</td>
+<td>css属性，参考transition-duration</td>
+</tr>
+<tr>
+<td>setEasing</td>
+<td>参考CSS3</td>
+<td>css属性，参考transition-timing-function</td>
+</tr>
+<tr>
+<td>setProperty</td>
+<td>参考CSS3</td>
+<td>css属性，参考transition-property</td>
+</tr>
+</tbody>
+</table>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/ybbjegj/smui">smui --- 移动端组件库</a> is maintained by <a href="https://github.com/ybbjegj">ybbjegj</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
